@@ -1,0 +1,33 @@
+name: ActionLab2
+
+on: [pull_request, push]
+
+jobs:
+  building:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+          
+      - name: whatDo
+        run: echo "building program"
+        
+      - name: buildingProgram
+      
+        run: |
+          make build
+          make clean
+ 
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      - name: whatDo
+        run: echo "testing program"
+        
+      - name: testingProgram
+        run: make test
