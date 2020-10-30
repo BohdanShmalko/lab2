@@ -22,9 +22,9 @@ func CalculatePostfix(input string) (float64, error) {
   var stack []float64
 
   strArr := strings.Fields(input)
-
   for _, val := range strArr {
     if action , found := operators[val]; found {
+      if len(stack) < 2 { return -1, errors.New("!!! You entered incorrect data !!!")}
       y := stack[len(stack) - 1]
       stack = stack[:len(stack)-1]
       x := stack[len(stack) - 1]

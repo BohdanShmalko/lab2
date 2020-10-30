@@ -20,18 +20,19 @@ var testMap = map[string]float64 {
 	"6 3 ^ 348 2 / + 610 3 * - 210 3 * + 3 6 ^ + 12 -" : -93, //6 ^ 3 + 348 / 2 - 610 * 3 + 210 * 3 + 3 ^ 6 - 12
 	"614 22300 2 / + 4 6 ^ + 25 5 ^ 12 / + 93 +" : 829755.0833333334, //614 + 22300 / 2 + 4 ^ 6 + 25 ^ 5 / 12 + 93
 	"33448 2212 16 / 12 2 ^ * + 16 4 / 28 * + 483 -" : 52985, //33448 + 2212 / 16 * 12 ^ 2 + 16 / 4 * 28 - 483
-	"ksksk sllsl " : -1,
-  "" : -1,
+  "+ + 2 22 31" : -1, //incorrect data
+	"ksksk sllsl " : -1, //incorrect data
+  "" : -1, // empty string
 }
 
-var res float64
-var err error
+var ( res float64; err error )
 for key , val := range testMap {
 	res, err = CalculatePostfix(key)
 	if err != nil {
-			fmt.Println("ERROR : ", err)
+      c.Error(err)
+			//fmt.Println("ERROR : ", err)
 		} else {
-			c.Assert(res, gocheck.Equals, val)
+			c.Check(res, gocheck.Equals, val)
 		}
   }
 }
