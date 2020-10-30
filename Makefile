@@ -4,9 +4,9 @@ clean:
 	rm -rf out
 
 test: *.go
-	go vet ./...
-	go test ./...
+	go test implementation.go implementation_test.go
+	go test implementation.go handler.go handler_test.go
 
-out/example: implementation.go cmd/example/main.go
+build:
 	mkdir -p out
-	go build -o out/example ./cmd/example
+	go build -o out/example ./cmd/example/main.go

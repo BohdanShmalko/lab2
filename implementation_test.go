@@ -29,8 +29,8 @@ var ( res float64; err error )
 for key , val := range testMap {
 	res, err = CalculatePostfix(key)
 	if err != nil {
-      c.Error(err)
-			//fmt.Println("ERROR : ", err)
+      //c.Error(err)
+			fmt.Println("ERROR : ", err)
 		} else {
 			c.Check(res, gocheck.Equals, val)
 		}
